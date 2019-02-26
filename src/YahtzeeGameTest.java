@@ -67,5 +67,12 @@ public class YahtzeeGameTest {
 		this.yahtzee.setCategory(new Threes());
 		assertEquals(12, this.yahtzee.score());
 	}
+	
+	@Test
+	public void testFours11244scores8() {
+		this.yahtzee.setRoll(new Roll(1,1,2,4,4));
+		this.yahtzee.setCategory(new Fours());
+		assertEquals(8, this.yahtzee.score());
+}
 
 }
