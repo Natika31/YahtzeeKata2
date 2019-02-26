@@ -25,5 +25,19 @@ public class YahtzeeGameTest {
 		this.yahtzee.setCategory(new Chance());
 		assertEquals(14, this.yahtzee.score());
 	}
+	
+	@Test
+	public void testYahtzee11111scores50() {
+		this.yahtzee.setRoll(new Roll(1, 1, 1, 1, 1));
+		this.yahtzee.setCategory(new Yahtzee());
+		assertEquals(50, this.yahtzee.score());
+	}
+	
+	@Test
+	public void testYahtzee11121scores0() {
+		this.yahtzee.setRoll(new Roll(1, 1, 1, 2, 1));
+		this.yahtzee.setCategory(new Yahtzee());
+		assertEquals(0, this.yahtzee.score());
+}
 
 }

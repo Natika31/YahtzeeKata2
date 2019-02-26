@@ -1,10 +1,10 @@
 
 public abstract class Category {
+	
+	protected boolean isCompatible = true;
 
 	public abstract int compute(Roll roll) ;
 	
-	public boolean isCompatible(Roll roll) {
-		return true;
-	}	
+	public abstract boolean isCompatible(Roll roll);
 
 }
