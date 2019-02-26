@@ -1,27 +1,28 @@
 # YahtzeeKata2
 
 Définition de FINI:
-    - Tous les tests passent
-    - Les tests expriment l'intention de votre code
-    - Chaque méthode a moins de 10 lignes
-    - Les variables et méthodes sont correctement nommées
-    - Il n'existe plus aucune duplication de code
+
+    Tous les tests passent
+    Les tests expriment l'intention de votre code
+    Chaque méthode a moins de 10 lignes
+    Les variables et méthodes sont correctement nommées
+    Il n'existe plus aucune duplication de code
     
     --------------------------------------------------------
     
-    Rappel des règles du jeu de Yam's (Yahtzee): 
+Rappel des règles du jeu de Yam's (Yahtzee): 
     
-    Extrait du site : http://codingdojo.org/kata/Yahtzee/
+Extrait du site : http://codingdojo.org/kata/Yahtzee/
     
     "Problem Description
 
-The game of yahtzee is a simple dice game. Each round, each player rolls five six sided dice. The player may choose to reroll some or all of the dice up to three times (including the original roll). The player then places the roll at a category, such as ones, twos, sixes, pair, two pairs etc. If the roll is compatible with the score, the player gets a score for this roll according to the rules. If the roll is not compatible, the player gets a score of zero for this roll.
+    The game of yahtzee is a simple dice game. Each round, each player rolls five six sided dice. The player may choose to reroll some or all of the dice up to three times (including the original roll). The player then places the roll at a category, such as ones, twos, sixes, pair, two pairs etc. If the roll is compatible with the score, the player gets a score for this roll according to the rules. If the roll is not compatible, the player gets a score of zero for this roll.
 
-The kata consists of creating the rules to score a roll in any of a predefined category. Given a roll and a category, the final solution should output the score for this roll placed in this category.
+    The kata consists of creating the rules to score a roll in any of a predefined category. Given a roll and a category, the final solution should output the score for this roll placed in this category.
 
-Yahtzee rules description and suggested test cases
+    Yahtzee rules description and suggested test cases
 
-The following categories exists:
+    The following categories exists:
 
     Ones, Twos, Threes, Fours, Fives, Sixes: The player scores the sum of the dice that reads one, two, three, four, five or six, respectively. For example, 1, 1, 2, 4, 4 placed on “fours” gives 8 points.
     Pair: The player scores the sum of the two highest matching dice. For example, 3, 3, 3, 4, 4 placed on “pair” gives 8.
