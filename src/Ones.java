@@ -11,6 +11,4 @@ public class Ones extends Category {
 		return roll.countOccurrence(1) != 0;
 	}
 
-
-
 }
