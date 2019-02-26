@@ -117,4 +117,46 @@ public class YahtzeeGameTest {
 		assertEquals(0, this.yahtzee.score());
 	}
 
+	@Test
+	public void testTriple33345scores9() {
+		this.yahtzee.setRoll(new Roll(3,3,3,4,5));
+		this.yahtzee.setCategory(new Triple());
+		assertEquals(9, this.yahtzee.score());
+	}
+
+	@Test
+	public void testTriple33456scores0() {
+		this.yahtzee.setRoll(new Roll(3,3,4,5,6));
+		this.yahtzee.setCategory(new Triple());
+		assertEquals(0, this.yahtzee.score());
+	}
+
+	@Test
+	public void testTriple33331scores0() {
+		this.yahtzee.setRoll(new Roll(3,3,3,3,1));
+		this.yahtzee.setCategory(new Triple());
+		assertEquals(0, this.yahtzee.score());
+	}
+	
+	@Test
+	public void testQuadruple22225scores8() {
+		this.yahtzee.setRoll(new Roll(2,2,2,2,5));
+		this.yahtzee.setCategory(new Quadruple());
+		assertEquals(8, this.yahtzee.score());
+	}
+	
+	@Test
+	public void testQuadruple22255scores0() {
+		this.yahtzee.setRoll(new Roll(2,2,2,5,5));
+		this.yahtzee.setCategory(new Quadruple());
+		assertEquals(0, this.yahtzee.score());
+	}
+	
+	@Test
+	public void testQuadruple22222scores0() {
+		this.yahtzee.setRoll(new Roll(2,2,2,2,2));
+		this.yahtzee.setCategory(new Quadruple());
+		assertEquals(0, this.yahtzee.score());
+}
+
 }

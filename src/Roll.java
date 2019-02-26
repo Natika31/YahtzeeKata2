@@ -39,9 +39,17 @@ public class Roll extends ArrayList<Integer>{
 	}
 
 
-	public boolean containsTwins(int typeOfTwin) {
-		return this.occurrencesArray.contains(typeOfTwin);
+	public boolean containsTwins(int nbOfTwin) {
+		return this.occurrencesArray.contains(nbOfTwin);
 	}
+	
+	public int getTwinsValue(int nbOfTwin) {
+		int index = 0;
+		while(this.occurrencesArray.get(index) != nbOfTwin && index < this.occurrencesArray.size()) {
+			index++;
+		}
+		return index + 1;	}
+	
 
 	public int greatestPairValue() {
 		int index = this.occurrencesArray.size() - 1 ;
@@ -49,5 +57,7 @@ public class Roll extends ArrayList<Integer>{
 			index --;
 		return index + 1; 
 	}
+
+
 
 }
