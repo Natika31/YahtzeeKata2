@@ -16,5 +16,14 @@ public class Roll extends ArrayList<Integer>{
 			sum +=dice;
 		return sum;		
 	}
+	
+	public int countOccurrence(int searchedValue) {
+		int occNb = 0;
+		for(int dice : this) {
+			if(dice == searchedValue)
+				occNb++;
+		}
+		return occNb;
+	}
 
 }
