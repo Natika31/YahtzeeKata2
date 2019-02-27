@@ -137,26 +137,47 @@ public class YahtzeeGameTest {
 		this.yahtzee.setCategory(new Triple());
 		assertEquals(0, this.yahtzee.score());
 	}
-	
+
 	@Test
 	public void testQuadruple22225scores8() {
 		this.yahtzee.setRoll(new Roll(2,2,2,2,5));
 		this.yahtzee.setCategory(new Quadruple());
 		assertEquals(8, this.yahtzee.score());
 	}
-	
+
 	@Test
 	public void testQuadruple22255scores0() {
 		this.yahtzee.setRoll(new Roll(2,2,2,5,5));
 		this.yahtzee.setCategory(new Quadruple());
 		assertEquals(0, this.yahtzee.score());
 	}
-	
+
 	@Test
 	public void testQuadruple22222scores0() {
 		this.yahtzee.setRoll(new Roll(2,2,2,2,2));
 		this.yahtzee.setCategory(new Quadruple());
 		assertEquals(0, this.yahtzee.score());
-}
+	}
+
+	@Ignore
+	public void testTwoPair11233scores8() {
+		this.yahtzee.setRoll(new Roll(1,1,2,3,3));
+		this.yahtzee.setCategory(new TwoPairs());
+		assertEquals(8, this.yahtzee.score());
+	}
+
+	@Ignore
+	public void testTwoPair11234scores0() {
+		this.yahtzee.setRoll(new Roll(1,1,2,3,4));
+		this.yahtzee.setCategory(new TwoPairs());
+		assertEquals(0, this.yahtzee.score());
+	}
+
+	@Test
+	public void testTwoPair11222scores0() {
+		this.yahtzee.setRoll(new Roll(1,1,2,2,2));
+		this.yahtzee.setCategory(new TwoPairs());
+		assertEquals(0, this.yahtzee.score());
+	}
 
 }
