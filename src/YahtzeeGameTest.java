@@ -180,4 +180,23 @@ public class YahtzeeGameTest {
 		assertEquals(0, this.yahtzee.score());
 	}
 
+	@Test
+	public void testsmallStraight12345scores15() {
+		this.yahtzee.setRoll(new Roll(1,2,3,4,5));
+		this.yahtzee.setCategory(new SmallStraight());
+		assertEquals(15, this.yahtzee.score());
+	}
+	@Test
+	public void testsmallStraight13345scores0() {
+		this.yahtzee.setRoll(new Roll(1,3,3,4,5));
+		this.yahtzee.setCategory(new SmallStraight());
+		assertEquals(0, this.yahtzee.score());
+	}
+	@Ignore
+	public void testLargestStraight12345scores20() {
+		this.yahtzee.setRoll(new Roll(2,3,4,5,6));
+		this.yahtzee.setCategory(new LargeStraight());
+		assertEquals(20, this.yahtzee.score());
+	}
+
 }
