@@ -46,22 +46,17 @@ public class Roll extends ArrayList<Integer>{
 	}
 
 	public boolean containsTwoPairs() {
-		int nbOfPair = 0;
-		for(int occNb : this.nbOfOccForEachValueArray) {
-			if(occNb == 2)
-				nbOfPair++;
-		}
-		return (nbOfPair == 2);
+		boolean contains = true;
+		for(int occNb : this.nbOfOccForEachValueArray) 
+			contains &= occNb == 2;		
+		return contains;
 	}
 	
 	public boolean containsStraight(int minValue) {
-		int value = minValue;
-		int nbOfDice = 5;
-		while(this.nbOfOccForEachValueArray.get(value) == 1) {
-			nbOfDice --;
-			value ++;
-		}
-		return (value == 5);
+		boolean contains = true;
+		for(int index = minValue; index < this.size(); index ++) 
+			contains &= this.nbOfOccForEachValueArray.get(index) == 1;		
+		return contains;
 	}
 
 	public int getTwinsValue(int nbOfTwin) {
