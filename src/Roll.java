@@ -41,14 +41,23 @@ public class Roll extends ArrayList<Integer>{
 		return occNb;
 	}
 
-	public boolean containsTwins(int nbOfTwin) {
-		return this.nbOfOccForEachValueArray.contains(nbOfTwin);
+	public boolean containsTwins(int typeOfTwin) {
+		return this.nbOfOccForEachValueArray.contains(typeOfTwin);
 	}
 
-	public boolean containsTwoPairs() {
-		boolean contains = true;
-		for(int occNb : this.nbOfOccForEachValueArray) 
-			contains &= occNb == 2;		
+	public boolean containsTwoTwins() {
+		int nbOfTwins = 0;
+		for(int occNb : this.nbOfOccForEachValueArray) {
+			if(occNb == Category.PAIR || occNb == Category.TRIPLE)
+				nbOfTwins ++;
+		}
+		return nbOfTwins == 2;
+	}
+	
+	public boolean containsTRIPLE() {
+		boolean contains = false;
+		for(int occNb : this.nbOfOccForEachValueArray)
+			contains |= occNb == Category.TRIPLE;
 		return contains;
 	}
 	
@@ -85,6 +94,8 @@ public class Roll extends ArrayList<Integer>{
 			index --;
 		return index + 1; 
 	}
+
+
 
 
 

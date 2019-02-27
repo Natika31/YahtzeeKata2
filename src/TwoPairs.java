@@ -8,7 +8,7 @@ public class TwoPairs extends Category {
 
 	@Override
 	public boolean isCompatible(Roll roll) {
-		return roll.containsTwoPairs();
+		return roll.containsTwoTwins() && !roll.containsTRIPLE() ;
 	}
 
 }
