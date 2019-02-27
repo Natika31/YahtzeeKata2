@@ -198,6 +198,28 @@ public class YahtzeeGameTest {
 		this.yahtzee.setCategory(new LargeStraight());
 		assertEquals(0, this.yahtzee.score());
 	}
-	
+
+	@Test
+	public void testFullHouse11222scores8() {
+		this.yahtzee.setRoll(new Roll(1,1,2,2,2));
+		this.yahtzee.setCategory(new FullHouse());
+		assertEquals(8, this.yahtzee.score());
+	}
+
+	@Test
+	public void testFullHouse22334scores0() {
+		this.yahtzee.setRoll(new Roll(2,2,3,3,4));
+		this.yahtzee.setCategory(new FullHouse());
+		assertEquals(0, this.yahtzee.score());
+	}
+
+	@Test
+	public void testFullHouse44444scores0() {
+		this.yahtzee.setRoll(new Roll(4,4,4,4,4));
+		this.yahtzee.setCategory(new FullHouse());
+		assertEquals(0, this.yahtzee.score());
+	}
+
+
 
 }
