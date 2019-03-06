@@ -26,7 +26,7 @@ public class Roll extends ArrayList<Integer>{
 		return occurrences;
 	}
 
-	private int getNbOfKind(int diceSide) {
+	public int getNbOfKind(int diceSide) {
 		return this.occurrences.get(diceSide);
 	}
 
@@ -39,7 +39,7 @@ public class Roll extends ArrayList<Integer>{
 
 	public int getTwinsValue(int nbOfKind) {
 		this.diceSide = ONE;
-		while(getNbOfKind(diceSide) != nbOfKind && diceSide < 6) 
+		while(getNbOfKind(diceSide) != nbOfKind && diceSide < SIX) 
 			diceSide++;
 		return diceSide;	
 	}

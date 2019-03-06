@@ -8,12 +8,7 @@ public class Yahtzee extends Category {
 	}
 	
 	public boolean isCompatible(Roll roll) {
-		int i = 0;
-		while(isCompatible && i < roll.size()-1) {
-			super.isCompatible = roll.get(i) == roll.get(i+1);
-			i++;
-		}
-		return isCompatible;
+		return roll.containsTwins(YAHTZEE);
 	}	
 
 }
