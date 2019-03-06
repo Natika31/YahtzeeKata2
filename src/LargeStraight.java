@@ -8,7 +8,7 @@ public class LargeStraight extends Category {
 
 	@Override
 	public boolean isCompatible(Roll roll) {
-		return roll.containsStraight(1);
+		return roll.containsStraight(2);
 	}
 
 }

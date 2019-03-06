@@ -3,12 +3,12 @@ public class Ones extends Category {
 
 	@Override
 	public int compute(Roll roll) {
-		return roll.getNbOfKindForAllValues().countOccurrence(1);
+		return roll.getOccurrences().countOccurrence(Roll.ONE);
 	}
 
 	@Override
 	public boolean isCompatible(Roll roll) {
-		return roll.getNbOfKindForAllValues().countOccurrence(1) != 0;
+		return roll.getOccurrences().countOccurrence(Roll.ONE) >= 1;
 	}
 
 }

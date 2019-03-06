@@ -8,7 +8,7 @@ public class SmallStraight extends Category {
 
 	@Override
 	public boolean isCompatible(Roll roll) {
-		return roll.containsStraight(0);
+		return roll.containsStraight(1);
 	}
 
 }

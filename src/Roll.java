@@ -2,7 +2,16 @@ import java.util.ArrayList;
 
 public class Roll extends ArrayList<Integer>{
 
-	private OccurrenceCounter nbOfKindForAllValues;
+	private Occurrences occurrences;
+
+	private int diceSide;
+
+	public final static int ONE=1;
+	public final static int TWO=2;
+	public final static int THREE=3;
+	public final static int FOUR=4;
+	public final static int FIVE=5;
+	public final static int SIX=6;
 
 	public Roll(int dice1, int dice2, int dice3, int dice4, int dice5) {
 		this.add(dice1);
@@ -10,71 +19,70 @@ public class Roll extends ArrayList<Integer>{
 		this.add(dice3);
 		this.add(dice4);
 		this.add(dice5);
-		this.nbOfKindForAllValues = new OccurrenceCounter(this);
+		this.occurrences = new Occurrences(this);
 	}
-	
-	public OccurrenceCounter getNbOfKindForAllValues() {
-		return nbOfKindForAllValues;
+
+	public Occurrences getOccurrences() {
+		return occurrences;
 	}
-	
-	private Integer getNbOfKindForOneValue(int sideValue) { 
-		return this.nbOfKindForAllValues.get(sideValue);
+
+	private int getNbOfKind(int diceSide) {
+		return this.occurrences.get(diceSide);
 	}
 
 	public int getGreatestPairValue() {
-		int index = this.nbOfKindForAllValues.size() - 1 ;
-		while(index != 0 && getNbOfKindForOneValue(index) != 2) 
-			index --;
-		return index + 1; 
-	}
-	
-	public int getTwinsValue(int typeOfTwin) {
-		int index = 0;
-		while(getNbOfKindForOneValue(index) != typeOfTwin && index < this.nbOfKindForAllValues.size()) 
-			index++;
-		return index + 1;	
+		this.diceSide = SIX;
+		while(diceSide >= ONE && getNbOfKind(diceSide) != Category.PAIR) 
+			diceSide --;
+		return diceSide; 
 	}
 
-	public boolean containsTwins(int typeOfTwin) {
-		return this.nbOfKindForAllValues.contains(typeOfTwin);
+	public int getTwinsValue(int nbOfKind) {
+		this.diceSide = ONE;
+		while(getNbOfKind(diceSide) != nbOfKind && diceSide < 6) 
+			diceSide++;
+		return diceSide;	
 	}
-	
+
+	public boolean containsTwins(int nbOfKind) {
+		return getOccurrences().containsValue(nbOfKind);
+	}
+
 	public boolean containsTwoTwins() {
 		int nbOfTwins = 0;
-		for(int nbOfKindForOneSide : this.nbOfKindForAllValues) {
-			if(nbOfKindForOneSide == Category.PAIR || nbOfKindForOneSide == Category.TRIPLE)
+		for(int nbOfKind : this.occurrences.values()) {
+			if(nbOfKind == Category.PAIR || nbOfKind == Category.TRIPLE)
 				nbOfTwins ++;
 		}
-		return nbOfTwins == 2;
+		return nbOfTwins == Category.TWO_PAIRS;
 	}
-	
+
 	public boolean containsStraight(int minValue) {
 		boolean contains = true;
-		for(int index = minValue; index < this.size(); index ++) 
-			contains &= getNbOfKindForOneValue(index) == 1;		
+		this.diceSide = minValue;
+		while(diceSide < this.size()) {
+			contains &= getNbOfKind(diceSide) == 1;
+			diceSide ++;
+		}	
 		return contains;
 	}
-	
+
 	public int sumAllDices() {
 		int sum = 0;
 		for(int dice : this) 
 			sum +=dice;
 		return sum;		
 	}
-	
+
 	public int sumPairsValue() {
-		int pairIndex = 0;
-		int index = 1;
-		for(int occNb : this.nbOfKindForAllValues) {
-			if(occNb == Category.PAIR) 
-				pairIndex += index;
-			index++;
-		}
-		return pairIndex*2;
+		int sum =0;
+		this.diceSide = ONE;
+		while(diceSide < SIX) {
+			if(this.getNbOfKind(diceSide) == Category.PAIR)
+				sum += diceSide*2;
+			diceSide ++;
+		}	
+		return sum;
 	}
-
-
-
-
 
 }

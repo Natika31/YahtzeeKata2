@@ -1,13 +1,13 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
-public class OccurrenceCounter extends ArrayList<Integer>{
+public class Occurrences extends HashMap<Integer,Integer>{
 
 	private Roll roll;
 
-	public OccurrenceCounter(Roll roll) {
+	public Occurrences(Roll roll) {
 		this.roll = roll;
 		for(int value = 1; value <=6; value++)  
-			this.add(countOccurrence(value));
+			this.put(value, countOccurrence(value));
 	}
 	
 	public int countOccurrence(int searchedValue) {
@@ -17,7 +17,6 @@ public class OccurrenceCounter extends ArrayList<Integer>{
 				occNb++;
 		}
 		return occNb;
-	}
-	
+	}	
 	
 }
