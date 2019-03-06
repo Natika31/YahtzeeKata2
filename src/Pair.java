@@ -3,7 +3,7 @@ public class Pair extends Category {
 
 	@Override
 	public int compute(Roll roll) {
-		return roll.greatestPairValue()*2;
+		return roll.getGreatestPairValue()*2;
 	}
 
 	@Override

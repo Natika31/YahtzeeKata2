@@ -3,7 +3,7 @@ public class LargeStraight extends Category {
 
 	@Override
 	public int compute(Roll roll) {
-		return roll.sumAll();
+		return roll.sumAllDices();
 	}
 
 	@Override

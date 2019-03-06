@@ -1,13 +1,8 @@
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
 
 public class Roll extends ArrayList<Integer>{
 
-	private ArrayList<Integer> nbOfOccForEachValueArray;
-
-	private int[] values = {1,2,3,4,5,6};
-
+	private OccurrenceCounter nbOfKindForAllValues;
 
 	public Roll(int dice1, int dice2, int dice3, int dice4, int dice5) {
 		this.add(dice1);
@@ -15,40 +10,39 @@ public class Roll extends ArrayList<Integer>{
 		this.add(dice3);
 		this.add(dice4);
 		this.add(dice5);
-		this.countOccurrences();
+		this.nbOfKindForAllValues = new OccurrenceCounter(this);
+	}
+	
+	public OccurrenceCounter getNbOfKindForAllValues() {
+		return nbOfKindForAllValues;
+	}
+	
+	private Integer getNbOfKindForOneValue(int sideValue) { 
+		return this.nbOfKindForAllValues.get(sideValue);
 	}
 
-	private List<Integer> countOccurrences() {
-		this.nbOfOccForEachValueArray = new ArrayList<>();
-		for(int value : values)  
-			this.nbOfOccForEachValueArray.add(countOccurrence(value));
-		return this.nbOfOccForEachValueArray;
+	public int getGreatestPairValue() {
+		int index = this.nbOfKindForAllValues.size() - 1 ;
+		while(index != 0 && getNbOfKindForOneValue(index) != 2) 
+			index --;
+		return index + 1; 
 	}
-
-	public int sumAll() {
-		int sum = 0;
-		for(int dice : this) 
-			sum +=dice;
-		return sum;		
-	}
-
-	public int countOccurrence(int searchedValue) {
-		int occNb = 0;
-		for(int dice : this) {
-			if(dice == searchedValue)
-				occNb++;
-		}
-		return occNb;
+	
+	public int getTwinsValue(int typeOfTwin) {
+		int index = 0;
+		while(getNbOfKindForOneValue(index) != typeOfTwin && index < this.nbOfKindForAllValues.size()) 
+			index++;
+		return index + 1;	
 	}
 
 	public boolean containsTwins(int typeOfTwin) {
-		return this.nbOfOccForEachValueArray.contains(typeOfTwin);
+		return this.nbOfKindForAllValues.contains(typeOfTwin);
 	}
-
+	
 	public boolean containsTwoTwins() {
 		int nbOfTwins = 0;
-		for(int occNb : this.nbOfOccForEachValueArray) {
-			if(occNb == Category.PAIR || occNb == Category.TRIPLE)
+		for(int nbOfKindForOneSide : this.nbOfKindForAllValues) {
+			if(nbOfKindForOneSide == Category.PAIR || nbOfKindForOneSide == Category.TRIPLE)
 				nbOfTwins ++;
 		}
 		return nbOfTwins == 2;
@@ -57,34 +51,26 @@ public class Roll extends ArrayList<Integer>{
 	public boolean containsStraight(int minValue) {
 		boolean contains = true;
 		for(int index = minValue; index < this.size(); index ++) 
-			contains &= this.nbOfOccForEachValueArray.get(index) == 1;		
+			contains &= getNbOfKindForOneValue(index) == 1;		
 		return contains;
 	}
-
-	public int getTwinsValue(int typeOfTwin) {
-		int index = 0;
-		while(this.nbOfOccForEachValueArray.get(index) != typeOfTwin && index < this.nbOfOccForEachValueArray.size()) 
-			index++;
-		return index + 1;	
+	
+	public int sumAllDices() {
+		int sum = 0;
+		for(int dice : this) 
+			sum +=dice;
+		return sum;		
 	}
-
+	
 	public int sumPairsValue() {
 		int pairIndex = 0;
 		int index = 1;
-		for(int occNb : this.nbOfOccForEachValueArray) {
+		for(int occNb : this.nbOfKindForAllValues) {
 			if(occNb == Category.PAIR) 
 				pairIndex += index;
 			index++;
 		}
 		return pairIndex*2;
-	}
-
-
-	public int greatestPairValue() {
-		int index = this.nbOfOccForEachValueArray.size() - 1 ;
-		while(index != 0 && this.nbOfOccForEachValueArray.get(index) != 2) 
-			index --;
-		return index + 1; 
 	}
 
 

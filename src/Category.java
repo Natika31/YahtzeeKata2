@@ -1,4 +1,3 @@
-
 public abstract class Category {
 	public static final int PAIR = 2;
 	public static final int TRIPLE = 3;
