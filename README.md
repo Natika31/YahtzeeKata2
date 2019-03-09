@@ -7,6 +7,10 @@ Définition de FINI:
     Chaque méthode a moins de 10 lignes
     Les variables et méthodes sont correctement nommées
     Il n'existe plus aucune duplication de code
+    
+Ce sujet est extrait du livre The Coding Dojo Handbook de Emily Bache.
+
+-----------------------------------------------------------------------
         
 Rappel des règles du jeu de Yam's (Yahtzee): 
     
